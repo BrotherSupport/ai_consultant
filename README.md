@@ -1,1 +1,1 @@
-# ai_-consultant
+# ai_consultant
