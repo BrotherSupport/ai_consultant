@@ -1,0 +1,43 @@
+---
+
+## 1. Hero Section (第一印象)
+* **Core Message:** A bold headline in Traditional Chinese that focuses on **results**, not just AI.
+    * *Example:* 「讓 AI 成為企業成長的實質動力：專為台灣中小企業打造的數位轉型方案」
+* **Sub-headline:** Address the "non-tech" pain point. Mention that you handle the complexity so they can focus on their business.
+* **CTA (Call to Action):** A prominent button: 「立即預約免費初步診斷」 (Book a Free Initial Diagnosis).
+
+## 2. Pain Point Recognition (痛點共鳴)
+To build empathy with non-tech SMBs, list common frustrations:
+* "Know AI is important but don't know where to start." (知道 AI 很強，但不知道從何開始？)
+* "Worried about high costs and low returns." (擔心投入成本高，卻看不到實質效益？)
+* "Lack of in-house technical talent to maintain systems." (缺乏技術團隊，無法自行維護運作？)
+
+## 3. Service Roadmap (服務範疇)
+Break down your four services into a logical **progression** so it feels like a guided journey:
+1.  **策略諮詢 (Consultant Call):** 洞察業務痛點，定義 AI 應用場景。
+2.  **技術導入引薦 (Tech/AI Introduction):** 篩選最適合貴司規模與預算的人工智慧工具。
+3.  **概念驗證 (POC Build):** 快速原型開發，低風險驗證商業價值。
+4.  **系統落地實施 (Solution Implementation):** 全方位整合至現有工作流，確保穩定運行。
+
+## 4. Local Advantages & Trust (在地化優勢)
+Since the target is Taiwan, emphasize:
+* **Traditional Chinese Support:** Deep understanding of local language nuances (especially for LLM/Customer Service apps).
+* **On-site Availability:** Mention you are based in Taiwan and can provide face-to-face support if needed.
+* **Security & Compliance:** Address concerns about data privacy and where data is stored (crucial for traditional industries).
+
+## 5. "Why Us" / Professional Pedigree (專業背書)
+* **Experience:** Briefly mention your background in high-tier global tech firms (without getting too bogged down in code specifics). Frame it as: "Global-scale expertise applied to local business scale."
+* **Simplicity:** Highlight your ability to translate "Tech-speak" into "Business-speak."
+
+## 6. Success Logic / Case Studies (成功案例/模擬情境)
+Since they are non-tech, use industry-specific analogies:
+* *Retail:* How AI automates inventory or customer FAQs.
+* *Manufacturing:* How AI assists in quality check or scheduling.
+* *Traditional Office:* How AI handles document processing and translation.
+
+## 7. Simple FAQ (常見問答)
+Address the "non-hands-on" nature:
+* "Do I need to know how to code?" (No, we handle the end-to-end tech.)
+* "Is AI only for large corporations?" (No, we specialize in scalable solutions for SMBs.)
+
+---
