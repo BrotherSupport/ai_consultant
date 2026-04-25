@@ -3,1062 +3,288 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="light" />
     <title>AI consultant - 台灣中小企業 AI 導入顧問</title>
-    <meta
-      name="description"
-      content="專為台灣中小企業打造的 AI 導入顧問服務：策略諮詢、AI 工具與應用導入、POC 概念驗證、企業級落地整合。"
-    />
     <style>
       :root {
-        --bg: #0b1220;
-        --bg2: #0a1a2a;
-        --card: rgba(255, 255, 255, 0.06);
-        --card2: rgba(255, 255, 255, 0.08);
-        --text: rgba(255, 255, 255, 0.92);
-        --muted: rgba(255, 255, 255, 0.7);
-        --muted2: rgba(255, 255, 255, 0.55);
-        --line: rgba(255, 255, 255, 0.12);
-        --accent: #6ee7ff;
-        --accent2: #a78bfa;
-        --good: #86efac;
-        --warn: #fbbf24;
-        --shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
-        --radius: 18px;
-        --radius2: 14px;
-        --max: 1120px;
-        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
-          monospace;
-        --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
-          "Segoe UI Emoji";
+        /* Base44 Signature Palette */
+        --bg: #ffffff;
+        --fg: #000000;
+        --accent: #ff3e00; /* Contrast orange/red */
+        --muted: #666666;
+        --border: #000000;
+        --card-bg: #f9f9f9;
+        
+        /* Typography */
+        --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+        --sans: "Inter", system-ui, -apple-system, sans-serif;
       }
 
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        height: 100%;
-      }
+      * { box-sizing: border-box; }
       body {
         margin: 0;
+        background: var(--bg);
+        color: var(--fg);
         font-family: var(--sans);
-        color: var(--text);
-        background: radial-gradient(1000px 700px at 15% 5%, rgba(110, 231, 255, 0.18), transparent 60%),
-          radial-gradient(900px 600px at 85% 10%, rgba(167, 139, 250, 0.14), transparent 55%),
-          radial-gradient(800px 650px at 60% 85%, rgba(134, 239, 172, 0.08), transparent 55%),
-          linear-gradient(180deg, var(--bg), var(--bg2));
-        overflow-x: hidden;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 3px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
       }
 
       .wrap {
-        width: min(var(--max), calc(100% - 40px));
+        max-width: 1200px;
         margin: 0 auto;
+        padding: 0 24px;
       }
 
-      /* Top nav */
-      .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        background: linear-gradient(180deg, rgba(11, 18, 32, 0.85), rgba(11, 18, 32, 0.55));
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
+      /* Borders & Grids - The Base44 Signature */
+      .b-bottom { border-bottom: 2px solid var(--border); }
+      .b-right { border-right: 2px solid var(--border); }
+      .b-all { border: 2px solid var(--border); }
+
+      /* Top Nav */
       .nav {
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        gap: 16px;
-        padding: 14px 0;
+        align-items: stretch;
+        height: 80px;
       }
       .brand {
         display: flex;
         align-items: center;
-        gap: 12px;
-        font-weight: 650;
-        letter-spacing: 0.2px;
+        padding: 0 24px;
+        font-family: var(--mono);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: -0.5px;
+        background: var(--fg);
+        color: var(--bg);
       }
-      .mark {
-        width: 34px;
-        height: 34px;
-        border-radius: 12px;
-        background: linear-gradient(135deg, rgba(110, 231, 255, 0.95), rgba(167, 139, 250, 0.92));
-        box-shadow: 0 18px 40px rgba(110, 231, 255, 0.15);
-        position: relative;
-        overflow: hidden;
-      }
-      .mark::after {
-        content: "";
-        position: absolute;
-        inset: -50%;
-        background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.75), transparent 45%);
-        transform: rotate(18deg);
-      }
-      .brand small {
-        display: block;
-        color: var(--muted2);
-        font-weight: 500;
-        letter-spacing: 0.3px;
-      }
-
       .navlinks {
         display: flex;
         align-items: center;
-        gap: 14px;
-        flex-wrap: wrap;
-        justify-content: flex-end;
       }
       .navlinks a {
-        padding: 8px 10px;
-        border-radius: 12px;
-        color: var(--muted);
-        text-decoration: none;
-        border: 1px solid transparent;
-      }
-      .navlinks a:hover {
-        color: var(--text);
-        border-color: rgba(255, 255, 255, 0.14);
-        background: rgba(255, 255, 255, 0.04);
-        text-decoration: none;
-      }
-
-      .btn {
-        display: inline-flex;
+        padding: 0 20px;
+        height: 100%;
+        display: flex;
         align-items: center;
+        font-family: var(--mono);
+        font-size: 14px;
+        text-decoration: none;
+        color: var(--fg);
+        border-left: 2px solid var(--border);
+        transition: background 0.2s;
+      }
+      .navlinks a:hover { background: #eee; }
+
+      /* Hero Section */
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        min-height: 60vh;
+      }
+      .hero-content {
+        padding: 80px 0;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        gap: 10px;
-        padding: 12px 14px;
-        border-radius: 14px;
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        background: rgba(255, 255, 255, 0.06);
-        color: var(--text);
-        cursor: pointer;
-        font-weight: 600;
-        letter-spacing: 0.2px;
-        transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
-        text-decoration: none;
       }
-      .btn:hover {
-        transform: translateY(-1px);
-        background: rgba(255, 255, 255, 0.09);
-        border-color: rgba(255, 255, 255, 0.22);
-        text-decoration: none;
-      }
-      .btn.primary {
-        background: linear-gradient(135deg, rgba(110, 231, 255, 0.95), rgba(167, 139, 250, 0.92));
-        color: rgba(7, 10, 18, 0.92);
-        border-color: transparent;
-      }
-      .btn.primary:hover {
-        filter: brightness(1.02);
-        transform: translateY(-1px);
-      }
-      .btn.small {
-        padding: 10px 12px;
-        border-radius: 12px;
-        font-weight: 650;
+      .hero-sidebar {
+        padding: 40px;
+        background: var(--card-bg);
+        border-left: 2px solid var(--border);
       }
 
-      .kbd {
-        font-family: var(--mono);
-        font-size: 12px;
-        padding: 4px 8px;
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        background: rgba(255, 255, 255, 0.05);
-        color: var(--muted);
-      }
-
-      /* Hero */
-      header.hero {
-        padding: 56px 0 28px;
-      }
-      .heroGrid {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 24px;
-        align-items: start;
-      }
-      .pillRow {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin: 0 0 16px;
-      }
-      .pill {
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        background: rgba(255, 255, 255, 0.05);
-        color: var(--muted);
-        padding: 8px 10px;
-        border-radius: 999px;
-        font-size: 13px;
-        letter-spacing: 0.2px;
-      }
       h1 {
-        margin: 0 0 14px;
-        font-size: clamp(34px, 4.4vw, 54px);
-        letter-spacing: -0.5px;
-        line-height: 1.05;
+        font-size: clamp(40px, 6vw, 84px);
+        line-height: 0.9;
+        margin: 0 0 32px;
+        letter-spacing: -3px;
+        font-weight: 800;
+        text-transform: uppercase;
       }
-      .subhead {
-        margin: 0 0 22px;
-        color: var(--muted);
-        font-size: 16px;
-        line-height: 1.6;
-        max-width: 62ch;
-      }
-      .ctaRow {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        align-items: center;
-        margin: 0 0 16px;
-      }
-      .metaRow {
-        display: flex;
-        gap: 14px;
-        align-items: center;
-        flex-wrap: wrap;
-        color: var(--muted2);
-        font-size: 13px;
-      }
-      .metaDot {
-        width: 6px;
-        height: 6px;
-        background: rgba(110, 231, 255, 0.75);
-        border-radius: 99px;
-        box-shadow: 0 0 0 6px rgba(110, 231, 255, 0.09);
-      }
-
-      .heroCard {
-        border-radius: var(--radius);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.04));
-        box-shadow: var(--shadow);
-        padding: 18px;
-        position: relative;
-        overflow: hidden;
-      }
-      .heroCard::before {
-        content: "";
-        position: absolute;
-        inset: -100px;
-        background: radial-gradient(circle at 25% 20%, rgba(110, 231, 255, 0.14), transparent 52%),
-          radial-gradient(circle at 75% 30%, rgba(167, 139, 250, 0.12), transparent 52%),
-          radial-gradient(circle at 60% 85%, rgba(134, 239, 172, 0.09), transparent 55%);
-        pointer-events: none;
-      }
-      .heroCard > * {
-        position: relative;
-      }
-      .heroCard h3 {
-        margin: 0 0 10px;
-        font-size: 15px;
-        color: rgba(255, 255, 255, 0.85);
-        letter-spacing: 0.2px;
-      }
-      .heroCard p {
-        margin: 0 0 14px;
-        color: var(--muted);
-        line-height: 1.55;
-        font-size: 14px;
-      }
-      .checklist {
-        display: grid;
-        gap: 10px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-      .checklist li {
-        display: grid;
-        grid-template-columns: 18px 1fr;
-        gap: 10px;
-        align-items: start;
-        color: var(--muted);
-        font-size: 14px;
-        line-height: 1.4;
-      }
-      .check {
-        width: 18px;
-        height: 18px;
-        border-radius: 8px;
-        background: rgba(134, 239, 172, 0.15);
-        border: 1px solid rgba(134, 239, 172, 0.35);
-        position: relative;
-        margin-top: 1px;
-      }
-      .check::after {
-        content: "";
-        position: absolute;
-        left: 5px;
-        top: 3px;
-        width: 6px;
-        height: 9px;
-        border-right: 2px solid rgba(134, 239, 172, 0.95);
-        border-bottom: 2px solid rgba(134, 239, 172, 0.95);
-        transform: rotate(40deg);
-      }
-
-      /* Sections */
-      section {
-        padding: 34px 0;
-      }
-      .sectionHead {
-        display: flex;
-        align-items: end;
-        justify-content: space-between;
-        gap: 16px;
-        margin: 0 0 16px;
-      }
-      h2 {
-        margin: 0;
-        font-size: 22px;
-        letter-spacing: -0.2px;
-      }
-      .sectionSub {
-        margin: 6px 0 0;
-        color: var(--muted);
-        line-height: 1.6;
-        max-width: 70ch;
-        font-size: 14px;
-      }
-      .grid3 {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-      }
-      .grid2 {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-      }
-      .card {
-        border-radius: var(--radius2);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: rgba(255, 255, 255, 0.05);
-        padding: 16px;
-      }
-      .card strong {
-        display: block;
-        margin-bottom: 6px;
-        letter-spacing: 0.1px;
-      }
-      .card p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.55;
-        font-size: 14px;
-      }
-      .tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        background: rgba(255, 255, 255, 0.04);
-        padding: 7px 10px;
-        font-size: 12px;
-        color: var(--muted);
-      }
-      .tagDot {
-        width: 8px;
-        height: 8px;
-        border-radius: 99px;
-        background: rgba(110, 231, 255, 0.8);
-        box-shadow: 0 0 0 5px rgba(110, 231, 255, 0.09);
-      }
-
-      /* Timeline */
-      .timeline {
-        display: grid;
-        gap: 12px;
-      }
-      .step {
-        display: grid;
-        grid-template-columns: 46px 1fr;
-        gap: 12px;
-        border-radius: var(--radius2);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: rgba(255, 255, 255, 0.05);
-        padding: 14px;
-      }
-      .num {
-        width: 46px;
-        height: 46px;
-        border-radius: 16px;
-        background: rgba(110, 231, 255, 0.12);
-        border: 1px solid rgba(110, 231, 255, 0.25);
-        display: grid;
-        place-items: center;
+      .mono-label {
         font-family: var(--mono);
-        color: rgba(255, 255, 255, 0.85);
-      }
-      .step h3 {
-        margin: 0 0 6px;
-        font-size: 15px;
-      }
-      .step p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 14px;
-        line-height: 1.55;
+        font-size: 13px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        display: block;
+        color: var(--accent);
       }
 
-      /* FAQ */
-      .faq {
-        display: grid;
-        gap: 10px;
-      }
-      details {
-        border-radius: var(--radius2);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: rgba(255, 255, 255, 0.05);
-        padding: 12px 14px;
-      }
-      summary {
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 20px 40px;
+        background: var(--fg);
+        color: var(--bg);
+        text-decoration: none;
+        font-family: var(--mono);
+        font-weight: 700;
+        text-transform: uppercase;
+        border: none;
         cursor: pointer;
-        list-style: none;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 14px;
-        user-select: none;
-        font-weight: 650;
+        transition: transform 0.1s;
       }
-      summary::-webkit-details-marker {
-        display: none;
-      }
-      .chev {
-        width: 14px;
-        height: 14px;
-        border-right: 2px solid rgba(255, 255, 255, 0.6);
-        border-bottom: 2px solid rgba(255, 255, 255, 0.6);
-        transform: rotate(-45deg);
-        transition: transform 160ms ease;
-      }
-      details[open] .chev {
-        transform: rotate(45deg);
-      }
-      details p {
-        margin: 10px 0 0;
-        color: var(--muted);
-        line-height: 1.6;
-        font-size: 14px;
+      .btn:hover { transform: translate(-4px, -4px); box-shadow: 4px 4px 0 var(--accent); }
+
+      /* Grid Sections */
+      .section-title {
+        padding: 24px;
+        font-family: var(--mono);
+        font-weight: 700;
+        background: var(--fg);
+        color: var(--bg);
+        display: inline-block;
       }
 
-      /* Contact */
-      .contactCard {
-        border-radius: var(--radius);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.04));
-        padding: 18px;
-      }
-      .form {
+      .feature-grid {
         display: grid;
-        gap: 10px;
-        margin-top: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       }
-      .row2 {
+      .feature-card {
+        padding: 48px 24px;
+        border-right: 2px solid var(--border);
+        border-bottom: 2px solid var(--border);
+      }
+      .feature-card:nth-child(3n) { border-right: none; }
+      .feature-card h3 {
+        font-family: var(--mono);
+        text-transform: uppercase;
+        margin-top: 0;
+      }
+
+      /* Contact / Forms */
+      .contact-box {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 10px;
+        border: 2px solid var(--border);
+        margin: 80px 0;
       }
-      label {
-        display: grid;
-        gap: 6px;
-        font-size: 13px;
-        color: var(--muted);
+      .input-group {
+        border-bottom: 2px solid var(--border);
+        padding: 20px;
       }
-      input,
-      textarea,
-      select {
+      .input-group:last-child { border-bottom: none; }
+      input, select, textarea {
         width: 100%;
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        background: rgba(10, 18, 32, 0.55);
-        color: var(--text);
-        padding: 12px 12px;
+        border: none;
+        background: transparent;
+        font-family: var(--mono);
+        font-size: 18px;
         outline: none;
-        font: inherit;
-      }
-      textarea {
-        min-height: 110px;
-        resize: vertical;
-      }
-      input:focus,
-      textarea:focus,
-      select:focus {
-        border-color: rgba(110, 231, 255, 0.5);
-        box-shadow: 0 0 0 5px rgba(110, 231, 255, 0.09);
-      }
-      .hint {
-        color: var(--muted2);
-        font-size: 12px;
-        line-height: 1.5;
-        margin: 0;
-      }
-      .toast {
-        display: none;
-        margin-top: 10px;
-        padding: 10px 12px;
-        border-radius: 12px;
-        border: 1px solid rgba(134, 239, 172, 0.25);
-        background: rgba(134, 239, 172, 0.12);
-        color: rgba(255, 255, 255, 0.85);
-        font-size: 13px;
-      }
-      .toast.show {
-        display: block;
+        padding: 10px 0;
       }
 
       footer {
-        padding: 26px 0 40px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        color: var(--muted2);
-        font-size: 13px;
-      }
-      .footerRow {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .fine {
-        max-width: 88ch;
-        line-height: 1.6;
+        padding: 60px 0;
+        background: var(--fg);
+        color: var(--bg);
+        font-family: var(--mono);
+        font-size: 12px;
       }
 
-      /* Responsive */
-      @media (max-width: 960px) {
-        .heroGrid {
-          grid-template-columns: 1fr;
-        }
-        .grid3 {
-          grid-template-columns: 1fr;
-        }
-        .grid2 {
-          grid-template-columns: 1fr;
-        }
-        .row2 {
-          grid-template-columns: 1fr;
-        }
-        .navlinks {
-          display: none;
-        }
+      @media (max-width: 900px) {
+        .hero, .contact-box { grid-template-columns: 1fr; }
+        .hero-sidebar { border-left: none; border-top: 2px solid var(--border); }
+        .feature-card { border-right: none; }
       }
     </style>
   </head>
   <body>
-    <div class="topbar">
+
+    <header class="b-bottom">
       <div class="wrap">
         <div class="nav">
-          <a class="brand" href="#top" aria-label="AI consultant home">
-            <span class="mark" aria-hidden="true"></span>
-            <span>
-              AI consultant
-              <small>台灣中小企業 AI 導入顧問</small>
-            </span>
-          </a>
-
-          <nav class="navlinks" aria-label="Primary">
-            <a href="#services">服務</a>
-            <a href="#usecases">應用</a>
-            <a href="#process">流程</a>
-            <a href="#trust">信任</a>
-            <a href="#faq">FAQ</a>
+          <a href="#" class="brand">AI CONSULTANT</a>
+          <nav class="navlinks">
+            <a href="#services">SERVICES</a>
+            <a href="#process">PROCESS</a>
+            <a href="#contact">CONTACT</a>
           </nav>
-
-          <a class="btn primary small" href="#contact">
-            預約免費初步診斷 <span class="kbd">30–60m</span>
-          </a>
         </div>
       </div>
-    </div>
+    </header>
 
-    <main id="top">
-      <header class="hero">
+    <main>
+      <section class="hero b-bottom">
         <div class="wrap">
-          <div class="heroGrid">
+          <div class="hero-content">
+            <span class="mono-label">// STRATEGY & IMPLEMENTATION</span>
+            <h1>讓 AI 成為企業<br>成長的實質動力</h1>
+            <p style="max-width: 600px; font-size: 20px; margin-bottom: 40px;">
+              專為台灣中小企業打造的 AI 導入顧問服務。從場景釐清到 POC 驗證，我們把複雜留在後台，把成果帶到前台。
+            </p>
             <div>
-              <div class="pillRow">
-                <span class="pill">結果導向（Business-first）</span>
-                <span class="pill">低風險 POC</span>
-                <span class="pill">可落地的工作流整合</span>
-              </div>
-
-              <h1>讓 AI 成為企業成長的實質動力。</h1>
-              <p class="subhead">
-                專為台灣中小企業打造的 AI 導入顧問服務：從策略與場景釐清，到 POC 概念驗證，再到企業級系統落地。
-                不需要你成為 AI 專家，我們把複雜留在後台，把成果帶到前台。
-              </p>
-
-              <div class="ctaRow">
-                <a class="btn primary" href="#contact">立即預約免費初步診斷</a>
-                <a class="btn" href="#services">看服務範疇</a>
-              </div>
-
-              <div class="metaRow" aria-label="Key assurances">
-                <span class="metaDot" aria-hidden="true"></span>
-                <span>首通電話無義務</span>
-                <span>・</span>
-                <span>先看 ROI，再談擴大</span>
-                <span>・</span>
-                <span>支援繁中在地語境</span>
-              </div>
+              <a href="#contact" class="btn">START DIAGNOSIS</a>
             </div>
-
-            <aside class="heroCard" aria-label="Quick checklist">
-              <h3>你可能正在卡在這些問題</h3>
-              <p>如果你符合其中 2–3 項，通常很適合先做一次低風險的初步診斷。</p>
-              <ul class="checklist">
-                <li><span class="check" aria-hidden="true"></span><span>知道 AI 很重要，但不知道從哪裡開始。</span></li>
-                <li><span class="check" aria-hidden="true"></span><span>工具很多、供應商很多，擔心選錯成本更高。</span></li>
-                <li><span class="check" aria-hidden="true"></span><span>缺內部技術團隊，怕導入後沒人維護。</span></li>
-                <li><span class="check" aria-hidden="true"></span><span>擔心資料安全、合規、權限與機密外洩。</span></li>
-              </ul>
-            </aside>
           </div>
         </div>
-      </header>
+        <aside class="hero-sidebar">
+          <span class="mono-label">Quick Checklist</span>
+          <ul style="list-style: none; padding: 0; font-family: var(--mono); font-size: 14px;">
+            <li style="margin-bottom: 20px;">[01] 知道 AI 重要但無從下手</li>
+            <li style="margin-bottom: 20px;">[02] 擔心工具選擇錯誤成本高</li>
+            <li style="margin-bottom: 20px;">[03] 缺乏內部技術維護團隊</li>
+            <li style="margin-bottom: 20px;">[04] 資料安全與權限疑慮</li>
+          </ul>
+        </aside>
+      </section>
 
-      <section id="services">
-        <div class="wrap">
-          <div class="sectionHead">
-            <div>
-              <h2>服務範疇</h2>
-              <p class="sectionSub">用一條清晰的路徑，把「想做 AI」變成「能落地、看得見的改善」。</p>
-            </div>
-            <span class="tag"><span class="tagDot" aria-hidden="true"></span>可依預算與成熟度分階段進行</span>
+      <section id="services" class="b-bottom">
+        <div class="section-title">SERVICE_SCOPE</div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <span class="mono-label">01</span>
+            <h3>策略諮詢</h3>
+            <p>產出可執行的 AI 機會清單與優先順序。</p>
           </div>
-
-          <div class="grid2">
-            <div class="card">
-              <strong>1) 策略諮詢（Consultation）</strong>
-              <p>釐清痛點、流程、資料現況與約束條件，產出可執行的 AI 機會清單與優先順序。</p>
-            </div>
-            <div class="card">
-              <strong>2) AI 工具/應用導入引薦（Strategy & Education）</strong>
-              <p>把技術語言翻成商業語言，選擇符合規模與風險偏好的方案與落地方式（含資料與權限策略）。</p>
-            </div>
-            <div class="card">
-              <strong>3) POC 概念驗證（Proof of Concept）</strong>
-              <p>快速做出可工作的原型，驗證可行性與 ROI。用小成本避免大方向錯誤。</p>
-            </div>
-            <div class="card">
-              <strong>4) 企業級落地（Implementation）</strong>
-              <p>整合既有系統與工作流，落地到可維運、可擴展、可控風險的解決方案。</p>
-            </div>
+          <div class="feature-card">
+            <span class="mono-label">02</span>
+            <h3>工具導入</h3>
+            <p>選擇符合規模與風險偏好的方案與落地方式。</p>
+          </div>
+          <div class="feature-card">
+            <span class="mono-label">03</span>
+            <h3>POC 驗證</h3>
+            <p>快速做出原型，用小成本避免大方向錯誤。</p>
           </div>
         </div>
       </section>
 
-      <section id="usecases">
-        <div class="wrap">
-          <div class="sectionHead">
-            <div>
-              <h2>常見 AI 應用場景</h2>
-              <p class="sectionSub">不談抽象名詞，談你每天的工作與可量化的改善。</p>
-            </div>
+      <section id="contact" class="wrap">
+        <div class="contact-box">
+          <div style="padding: 40px; background: var(--fg); color: var(--bg);">
+            <span class="mono-label" style="color: var(--accent);">// CONTACT_US</span>
+            <h2 style="font-size: 48px; letter-spacing: -2px; text-transform: uppercase;">預約免費<br>初步診斷</h2>
+            <p style="font-family: var(--mono); opacity: 0.7;">30-60m Discovery Call</p>
           </div>
-
-          <div class="grid3">
-            <div class="card">
-              <strong>📈 行銷與銷售</strong>
-              <p>內容生成、素材改寫、投放與名單整理、簡報與提案加速。</p>
+          <form style="padding: 20px;">
+            <div class="input-group">
+              <label class="mono-label">Name</label>
+              <input type="text" placeholder="Your Name">
             </div>
-            <div class="card">
-              <strong>💬 客戶服務</strong>
-              <p>FAQ 自動化、對話輔助、客服知識庫、工單分類與回覆草稿。</p>
+            <div class="input-group">
+              <label class="mono-label">Email</label>
+              <input type="email" placeholder="email@company.com">
             </div>
-            <div class="card">
-              <strong>📊 營運管理</strong>
-              <p>報表自動化、資料清理與彙整、異常提醒、會議紀要與追蹤。</p>
+            <div class="input-group">
+              <label class="mono-label">Message</label>
+              <textarea placeholder="Describe your pain point..."></textarea>
             </div>
-            <div class="card">
-              <strong>🧾 行政流程</strong>
-              <p>文件處理、Email/表單彙整、合約摘要、內部 SOP 搜尋與問答。</p>
+            <div style="padding: 20px;">
+              <button class="btn" type="submit" style="width: 100%;">SEND REQUEST</button>
             </div>
-            <div class="card">
-              <strong>🏭 產業工作流</strong>
-              <p>製造/零售/物流等流程助理：排程、稽核、品質與知識查詢（依產業客製）。</p>
-            </div>
-            <div class="card">
-              <strong>🔐 資安與合規</strong>
-              <p>資料分級、權限與稽核、私有化/混合部署策略，降低外洩與風險。</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="process">
-        <div class="wrap">
-          <div class="sectionHead">
-            <div>
-              <h2>合作流程</h2>
-              <p class="sectionSub">用最少的摩擦開始，用最清楚的里程碑推進。</p>
-            </div>
-          </div>
-
-          <div class="timeline">
-            <div class="step">
-              <div class="num">01</div>
-              <div>
-                <h3>預約免費初步診斷</h3>
-                <p>30–60 分鐘了解你的產業、目標、流程與限制。先把「想做什麼」說清楚。</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="num">02</div>
-              <div>
-                <h3>提出建議與優先順序</h3>
-                <p>聚焦 1–2 個最可能帶來回報的場景，建立衡量方式（時間、人力、成本、風險）。</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="num">03</div>
-              <div>
-                <h3>POC 概念驗證</h3>
-                <p>快速做出原型並驗證可行性，確認 ROI 與導入門檻，避免大規模投入後才發現不適合。</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="num">04</div>
-              <div>
-                <h3>擴大導入與落地整合</h3>
-                <p>整合到既有系統與工作流，建立可維運機制與權限/稽核策略，確保長期穩定。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="trust">
-        <div class="wrap">
-          <div class="sectionHead">
-            <div>
-              <h2>為什麼選擇我們</h2>
-              <p class="sectionSub">台灣 SMB 常見的顧慮：費用、風險、維護、資料安全。我們把這些當成設計前提。</p>
-            </div>
-          </div>
-
-          <div class="grid3">
-            <div class="card">
-              <strong>可衡量的成果導向</strong>
-              <p>先定義「改善指標」與驗證方式，再進入導入與擴大，避免 AI 變成一次性嘗試。</p>
-            </div>
-            <div class="card">
-              <strong>把技術翻譯成商業語言</strong>
-              <p>不需要懂模型名詞；你只需要決策目標、流程現況、與風險偏好，我們負責落地路徑。</p>
-            </div>
-            <div class="card">
-              <strong>重視資料、權限與合規</strong>
-              <p>針對敏感資料提供分級與存取策略，必要時可規劃私有化或混合部署，降低外洩風險。</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="faq">
-        <div class="wrap">
-          <div class="sectionHead">
-            <div>
-              <h2>FAQ</h2>
-              <p class="sectionSub">把常見疑慮先回答清楚，讓你更容易做下一步決策。</p>
-            </div>
-          </div>
-
-          <div class="faq" data-accordion="true">
-            <details>
-              <summary>
-                我需要會寫程式或懂 AI 嗎？
-                <span class="chev" aria-hidden="true"></span>
-              </summary>
-              <p>不需要。我們會把需求拆成可落地的流程與選項，讓你用商業角度做決策。</p>
-            </details>
-            <details>
-              <summary>
-                AI 只適合大公司嗎？
-                <span class="chev" aria-hidden="true"></span>
-              </summary>
-              <p>不是。我們特別擅長把 AI 變成「可負擔、可維護」的 SMB 方案，先用 POC 低風險驗證再擴大。</p>
-            </details>
-            <details>
-              <summary>
-                多久可以看到效果？
-                <span class="chev" aria-hidden="true"></span>
-              </summary>
-              <p>視場景與資料準備度而定。通常 POC 會以數週為單位，先在小範圍驗證可行性與 ROI。</p>
-            </details>
-            <details>
-              <summary>
-                資料安全怎麼處理？
-                <span class="chev" aria-hidden="true"></span>
-              </summary>
-              <p>
-                會先做資料分級與權限策略，並依需求選擇合適的部署方案（含私有化/混合部署）。你的機密資料不會
-                因為「導入 AI」而被迫冒不必要的風險。
-              </p>
-            </details>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact">
-        <div class="wrap">
-          <div class="sectionHead">
-            <div>
-              <h2>預約免費初步診斷</h2>
-              <p class="sectionSub">
-                留下基本資訊，我們會用 Email 與你確認時間。若你偏好其他聯繫方式，也可以先填在備註。
-              </p>
-            </div>
-          </div>
-
-          <div class="contactCard">
-            <div class="grid2">
-              <div>
-                <strong style="display: block; margin-bottom: 8px">建議你先準備</strong>
-                <p class="hint" style="margin-bottom: 12px">
-                  這會讓首次討論更有效率：目前卡住的流程、希望改善的指標（時間/人力/成本/錯誤率）、可用的資料來源、以及
-                  一個你希望在 3 個月內達到的目標。
-                </p>
-                <div class="pillRow" style="margin: 0">
-                  <span class="pill">不綁約</span>
-                  <span class="pill">先診斷再建議</span>
-                  <span class="pill">先 POC 再擴大</span>
-                </div>
-              </div>
-
-              <div>
-                <form class="form" id="leadForm" novalidate>
-                  <div class="row2">
-                    <label>
-                      聯絡人
-                      <input name="name" autocomplete="name" placeholder="王小明" required />
-                    </label>
-                    <label>
-                      Email
-                      <input name="email" type="email" autocomplete="email" placeholder="you@company.com" required />
-                    </label>
-                  </div>
-                  <div class="row2">
-                    <label>
-                      公司/品牌（選填）
-                      <input name="company" autocomplete="organization" placeholder="Company" />
-                    </label>
-                    <label>
-                      你想先討論的主題
-                      <select name="topic" required>
-                        <option value="" selected>請選擇…</option>
-                        <option value="customer-support">客服/知識庫/自動回覆</option>
-                        <option value="ops-automation">營運/行政自動化</option>
-                        <option value="sales-marketing">行銷/銷售加速</option>
-                        <option value="analytics">報表/數據整理</option>
-                        <option value="other">其他（請在備註說明）</option>
-                      </select>
-                    </label>
-                  </div>
-
-                  <label>
-                    備註（痛點/流程/目標）
-                    <textarea name="message" placeholder="例如：每天要整理 30+ 份報表，希望降到 1 小時內完成。"></textarea>
-                  </label>
-
-                  <div class="ctaRow" style="margin: 6px 0 0">
-                    <button class="btn primary" type="submit">產生預約郵件</button>
-                    <button class="btn" type="button" id="copyMsgBtn">複製內容</button>
-                  </div>
-                  <p class="hint">
-                    提交後會打開你的郵件軟體（mail app）產生一封預先填好的信件；你可在送出前再修改內容。
-                  </p>
-                  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-                </form>
-              </div>
-            </div>
-          </div>
+          </form>
         </div>
       </section>
     </main>
 
     <footer>
-      <div class="wrap">
-        <div class="footerRow">
-          <div class="brand" style="gap: 10px">
-            <span class="mark" aria-hidden="true" style="width: 28px; height: 28px; border-radius: 10px"></span>
-            <span>AI consultant</span>
-          </div>
-          <div class="fine">© <span id="year"></span> AI consultant. Built with plain HTML + vanilla JS.</div>
-        </div>
+      <div class="wrap" style="display: flex; justify-content: space-between;">
+        <span>© 2026 AI CONSULTANT</span>
+        <span>TW_SMB_AI_SOLUTIONS</span>
       </div>
     </footer>
 
-    <script>
-      (function () {
-        const $ = (sel, root = document) => root.querySelector(sel);
-        const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
-
-        // Year
-        $("#year").textContent = String(new Date().getFullYear());
-
-        // Smooth scroll for same-page anchors
-        $$('a[href^="#"]').forEach((a) => {
-          a.addEventListener("click", (e) => {
-            const href = a.getAttribute("href");
-            if (!href || href === "#") return;
-            const target = document.getElementById(href.slice(1));
-            if (!target) return;
-            e.preventDefault();
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-            history.pushState(null, "", href);
-          });
-        });
-
-        // Accordion behavior (optional): only keep one open at a time
-        const faq = $('[data-accordion="true"]');
-        if (faq) {
-          $$("details", faq).forEach((d) => {
-            d.addEventListener("toggle", () => {
-              if (!d.open) return;
-              $$("details[open]", faq).forEach((other) => {
-                if (other !== d) other.open = false;
-              });
-            });
-          });
-        }
-
-        // Contact form -> mailto composer + copy helper
-        const form = $("#leadForm");
-        const toast = $("#toast");
-        const copyBtn = $("#copyMsgBtn");
-
-        function showToast(msg, kind) {
-          toast.textContent = msg;
-          toast.classList.add("show");
-          toast.style.borderColor = kind === "error" ? "rgba(251, 191, 36, 0.35)" : "rgba(134, 239, 172, 0.25)";
-          toast.style.background = kind === "error" ? "rgba(251, 191, 36, 0.12)" : "rgba(134, 239, 172, 0.12)";
-          window.clearTimeout(showToast._t);
-          showToast._t = window.setTimeout(() => toast.classList.remove("show"), 4200);
-        }
-
-        function buildMessage(data) {
-          const lines = [
-            "你好，我想預約免費初步診斷（30–60 分鐘）。",
-            "",
-            `聯絡人：${data.name || ""}`,
-            `Email：${data.email || ""}`,
-            `公司/品牌：${data.company || "(未填)"}`,
-            `主題：${data.topicLabel || ""}`,
-            "",
-            "痛點/流程/目標：",
-            data.message || "(未填)",
-            "",
-            "我方便的時段（可填 2–3 個選項）：",
-            "- 1) ",
-            "- 2) ",
-            "- 3) ",
-          ];
-          return lines.join("\n");
-        }
-
-        function topicLabel(val) {
-          const opt = form.querySelector(`select[name="topic"] option[value="${CSS.escape(val)}"]`);
-          return opt ? opt.textContent.trim() : val;
-        }
-
-        function collect() {
-          const fd = new FormData(form);
-          const topic = String(fd.get("topic") || "");
-          return {
-            name: String(fd.get("name") || "").trim(),
-            email: String(fd.get("email") || "").trim(),
-            company: String(fd.get("company") || "").trim(),
-            topic,
-            topicLabel: topicLabel(topic),
-            message: String(fd.get("message") || "").trim(),
-          };
-        }
-
-        function validate(data) {
-          if (!data.name) return "請填寫聯絡人。";
-          if (!data.email) return "請填寫 Email。";
-          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return "Email 格式看起來不正確。";
-          if (!data.topic) return "請選擇一個主題。";
-          return null;
-        }
-
-        async function copyText(text) {
-          if (navigator.clipboard?.writeText) {
-            await navigator.clipboard.writeText(text);
-            return true;
-          }
-          // Fallback
-          const ta = document.createElement("textarea");
-          ta.value = text;
-          ta.setAttribute("readonly", "true");
-          ta.style.position = "fixed";
-          ta.style.top = "-9999px";
-          document.body.appendChild(ta);
-          ta.select();
-          const ok = document.execCommand("copy");
-          document.body.removeChild(ta);
-          return ok;
-        }
-
-        copyBtn.addEventListener("click", async () => {
-          const data = collect();
-          const msg = buildMessage(data);
-          try {
-            await copyText(msg);
-            showToast("已複製到剪貼簿。", "ok");
-          } catch {
-            showToast("複製失敗，請手動選取文字。", "error");
-          }
-        });
-
-        form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const data = collect();
-          const err = validate(data);
-          if (err) {
-            showToast(err, "error");
-            return;
-          }
-
-          const to = ""; // TODO: fill in your email, e.g. "hello@yourdomain.com"
-          const subject = `預約免費初步診斷｜${data.company ? data.company + "｜" : ""}${data.name}`;
-          const body = buildMessage(data);
-
-          if (!to) {
-            try {
-              await copyText(body);
-              showToast("尚未設定收件信箱：已先複製內容。請在程式碼中填入你的 Email（index.html 的 to 變數）。", "error");
-            } catch {
-              showToast("尚未設定收件信箱，且複製失敗。請在程式碼中填入你的 Email（index.html 的 to 變數）。", "error");
-            }
-            return;
-          }
-
-          const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-            body,
-          )}`;
-          window.location.href = mailto;
-          showToast("已產生預約郵件（如未自動開啟，請允許瀏覽器開啟 Mail app）。", "ok");
-        });
-      })();
-    </script>
   </body>
 </html>
