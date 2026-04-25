@@ -1,0 +1,222 @@
+Good brief. For this kind of **AI consulting → lead generation → enterprise service funnel**, your landing page shouldn’t just “describe services”—it needs to **reduce uncertainty, build trust, and move non-technical SMB owners toward booking a call**.
+
+Below is a structured breakdown of the **key context blocks your site should contain**, in a professional progression order (top → bottom of page logic).
+
+---
+
+# 🧭 1. Hero Section（第一屏：價值主張）
+
+**Purpose:** Immediately answer: *“What do you do, and why should I care?”*
+
+Include:
+
+* Clear positioning statement (AI for SMB transformation, not “AI tech”)
+* Target audience mention (Taiwan SMB / non-tech industries)
+* Primary CTA (book a call)
+
+**Example content:**
+
+* 「協助台灣中小企業導入 AI，從營運效率到營收成長全面升級」
+* CTA: 👉 預約免費 AI 諮詢 / Book a consultation
+
+---
+
+# 🧩 2. Problem Framing（痛點區）
+
+**Purpose:** Make non-tech users feel understood.
+
+Include SMB-specific pain points:
+
+* 人力不足 / 成本上升
+* 流程繁瑣、效率低
+* 不知道 AI 可以用在哪裡
+* 工具太多、不知道怎麼開始
+* 導入 AI 風險高、怕失敗
+
+Tone:
+
+* Simple, non-technical, business-focused
+
+---
+
+# 💡 3. Solution Overview（我們怎麼幫你）
+
+**Purpose:** Translate AI into business outcomes, not technology.
+
+Position your 4-stage service:
+
+1. **AI 顧問諮詢（Consultation）**
+
+   * Understand business pain points
+   * Identify AI opportunities
+
+2. **AI 應用導入介紹（AI Strategy & Education）**
+
+   * Explain use cases relevant to their industry
+   * Low technical barrier
+
+3. **POC 概念驗證（Proof of Concept）**
+
+   * Build small working prototype
+   * Validate ROI quickly
+
+4. **企業級解決方案導入（Full Implementation）**
+
+   * Production system deployment
+   * Integration with business workflows
+
+---
+
+# 🧠 4. Use Cases（AI 可以做什麼）
+
+**Purpose:** Help non-tech clients “see themselves in it”
+
+Organize by business function:
+
+* 📈 行銷與銷售
+
+  * 自動寫文案 / 廣告優化
+* 💬 客戶服務
+
+  * AI Chatbot / FAQ automation
+* 📊 營運管理
+
+  * 報表自動化 / 數據整理
+* 🧾 行政流程
+
+  * 文件處理 / Email 自動化
+* 🏭 產業專屬案例（if possible）
+
+Important:
+→ Avoid jargon like “LLM / RAG / agentic workflows”
+→ Focus on outcomes
+
+---
+
+# 🧪 5. How It Works（合作流程）
+
+**Purpose:** Reduce friction & uncertainty
+
+Simple 4-step flow:
+
+1. 填寫表單 / 預約諮詢
+2. 免費初步 AI 評估（30–60 min call）
+3. 提出 AI 導入建議書
+4. 進入 POC 或正式導入
+
+Add clarity:
+
+* No obligation for first call
+* Fast feedback cycle
+
+---
+
+# 🧑‍💼 6. Who This Is For（目標客戶）
+
+**Purpose:** Self-selection filter (important for SMB clarity)
+
+List clearly:
+
+適合：
+
+* 中小企業（10–500 人）
+* 傳統產業 / 非科技公司
+* 想提升效率但不知如何導入 AI
+* 有數位轉型需求但缺內部技術團隊
+
+不適合：
+
+* 想做純 AI 技術研發公司
+* 已有完整 AI team 的大型企業（optional)
+
+---
+
+# 📍 7. Trust / Credibility Section（信任建立）
+
+**Purpose:** Very important for Taiwan SMB market (high trust barrier)
+
+Include:
+
+* 顧問背景（AI / 軟體 / 顧問經驗）
+* 成功案例（even small pilots count）
+* 產業經驗
+* 合作流程透明
+
+If no big clients yet:
+→ Use “pilot projects / prototype experience” framing
+
+---
+
+# 🧪 8. Case Studies（如果有）
+
+Even 1–3 cases is enough.
+
+Structure:
+
+* 客戶產業
+* 問題
+* AI 解決方案
+* 成果（時間 / 成本 / 人力節省）
+
+---
+
+# 📞 9. Call to Action Section（轉換區）
+
+Repeat CTA strongly:
+
+* 免費 AI 導入諮詢
+* 30–60 分鐘診斷會議
+* 限時 / 名額感（optional but effective）
+
+Include:
+
+* Calendar booking / form link
+* Line / contact option (important in Taiwan market)
+
+---
+
+# ❓ 10. FAQ（降低疑慮）
+
+Important for non-tech SMB audience:
+
+Examples:
+
+* AI 導入需要寫程式嗎？
+* 我們公司沒有 IT 團隊可以做嗎？
+* 導入成本大概多少？
+* 多久可以看到效果？
+* 會不會很複雜？
+
+---
+
+# 🧱 Optional but High Impact Add-ons
+
+If you want to make it stronger:
+
+### 🔹 Industry-specific landing pages
+
+* manufacturing AI
+* retail AI
+* logistics AI
+
+### 🔹 ROI calculator
+
+* “節省多少人力 / 成本”
+
+### 🔹 Lead magnet
+
+* “AI 導入檢查清單 PDF”
+
+---
+
+# 🎯 Core Strategy Summary
+
+Your landing page is not:
+
+> “AI technology explanation site”
+
+It is:
+
+> “AI transformation consultant that helps non-technical SMB owners reduce risk and gain clarity → book a call”
+
+---
