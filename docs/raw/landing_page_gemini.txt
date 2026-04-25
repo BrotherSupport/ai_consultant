@@ -1,5 +1,3 @@
----
-
 ## 1. Hero Section (第一印象)
 * **Core Message:** A bold headline in Traditional Chinese that focuses on **results**, not just AI.
     * *Example:* 「讓 AI 成為企業成長的實質動力：專為台灣中小企業打造的數位轉型方案」
