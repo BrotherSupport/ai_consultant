@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Team - AI consultant</title>
+    <title>2026 年 AI 趨勢預測 - AI consultant</title>
     <style>
       :root {
         /* Base44 Signature Palette */
@@ -99,45 +99,33 @@
         color: var(--accent);
       }
 
-      /* Grid Sections */
-      .section-title {
-        padding: 24px;
+      .post-meta {
         font-family: var(--mono);
-        font-weight: 700;
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 24px;
+      }
+
+      .post-content {
+        max-width: 800px;
+        font-size: 18px;
+        line-height: 1.8;
+        margin-bottom: 40px;
+      }
+
+      .back-link {
+        display: inline-block;
+        padding: 10px 20px;
         background: var(--fg);
         color: var(--bg);
-        display: inline-block;
-      }
-
-      .team-copy {
-        max-width: 760px;
-        margin: 24px 0 0;
-        font-size: 18px;
-        color: var(--muted);
-        line-height: 1.8;
-      }
-
-      .team-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 24px;
-        margin-top: 32px;
-      }
-      .team-card {
-        padding: 36px 28px;
-        border: 2px solid var(--border);
-        background: var(--card-bg);
-        min-height: 280px;
-      }
-      .team-card h3 {
+        text-decoration: none;
         font-family: var(--mono);
+        font-weight: 700;
         text-transform: uppercase;
-        margin-top: 0;
+        font-size: 12px;
+        transition: transform 0.1s;
       }
-      .team-card p {
-        margin: 0;
-        color: var(--muted);
-      }
+      .back-link:hover { transform: translate(-2px, -2px); box-shadow: 2px 2px 0 var(--accent); }
 
       footer {
         padding: 60px 0;
@@ -175,31 +163,26 @@
     <main>
       <section class="hero b-bottom">
         <div class="wrap">
-          <span class="mono-label">// OUR TEAM</span>
-          <h1>專業團隊</h1>
-          <p style="max-width: 600px; font-size: 20px;">
-            我們的核心團隊結合技術專長與商業洞察，確保每一個專案都能以最佳實務執行。
-          </p>
+          <span class="mono-label">// AI TRENDS</span>
+          <h1>2026 年 AI 趨勢預測</h1>
+          <div class="post-meta">2026-04-27</div>
         </div>
       </section>
 
       <section class="wrap">
-        <div class="section-title">TEAM_MEMBERS</div>
-        <p class="team-copy">
-          團隊成員來自頂尖科技公司與新創企業，擁有豐富的 AI 系統開發與產品管理經驗，能夠從技術與商業雙重角度提供全方位支援。
-        </p>
-        <div class="team-grid">
-          <div class="team-card">
-            <span class="mono-label">J</span>
-            <h3>資深工程師</h3>
-            <p>前大型科技公司資深工程師，專精於 AI 系統、代理流程與雲端基礎設施。擅長技術設計、規劃與端到端開發，確保系統高效且可擴展。</p>
-          </div>
-          <div class="team-card">
-            <span class="mono-label">T</span>
-            <h3>資深產品負責人</h3>
-            <p>前領先科技新創公司資深產品負責人，具備深厚的產品理解與商業策略技能。擅長規劃、建置 MVP 以及運用現代工具與工作流程開發 AI 產品。</p>
-          </div>
+        <div class="post-content">
+          <p>隨著 AI 技術的快速演進，2026 年將迎來多項關鍵趨勢的轉折點。生成式 AI 將從實驗階段走向企業級應用，邊緣運算將使 AI 更貼近用戶需求，而中小企業將面臨前所未有的數位轉型機會。</p>
+          
+          <h2>生成式 AI 的企業化</h2>
+          <p>生成式 AI 已不再是新奇玩具，而是企業生產力的核心工具。從內容創作到程式碼生成，企業將開始系統性地整合這些技術到日常營運中。</p>
+          
+          <h2>邊緣運算的普及</h2>
+          <p>隨著 5G/6G 的部署，AI 推理將從雲端移向邊緣，這將大幅降低延遲並提升隱私保護，特別適合台灣的製造業與零售業應用。</p>
+          
+          <h2>中小企業的機會</h2>
+          <p>雲端服務的普及讓中小企業也能輕鬆採用先進 AI 技術，重點在於找到適合的切入點與可持續的實施策略。</p>
         </div>
+        <a href="blog.html" class="back-link">← BACK TO BLOG</a>
       </section>
     </main>
 

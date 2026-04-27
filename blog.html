@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Team - AI consultant</title>
+    <title>Blog - AI consultant</title>
     <style>
       :root {
         /* Base44 Signature Palette */
@@ -109,7 +109,7 @@
         display: inline-block;
       }
 
-      .team-copy {
+      .blog-copy {
         max-width: 760px;
         margin: 24px 0 0;
         font-size: 18px;
@@ -117,27 +117,46 @@
         line-height: 1.8;
       }
 
-      .team-grid {
+      .blog-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 24px;
         margin-top: 32px;
       }
-      .team-card {
+      .blog-card {
         padding: 36px 28px;
         border: 2px solid var(--border);
         background: var(--card-bg);
         min-height: 280px;
       }
-      .team-card h3 {
+      .blog-card h3 {
         font-family: var(--mono);
         text-transform: uppercase;
         margin-top: 0;
       }
-      .team-card p {
-        margin: 0;
+      .blog-card p {
+        margin: 0 0 16px;
         color: var(--muted);
       }
+      .blog-meta {
+        font-family: var(--mono);
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 12px;
+      }
+      .read-more {
+        display: inline-block;
+        padding: 10px 20px;
+        background: var(--fg);
+        color: var(--bg);
+        text-decoration: none;
+        font-family: var(--mono);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 12px;
+        transition: transform 0.1s;
+      }
+      .read-more:hover { transform: translate(-2px, -2px); box-shadow: 2px 2px 0 var(--accent); }
 
       footer {
         padding: 60px 0;
@@ -175,30 +194,45 @@
     <main>
       <section class="hero b-bottom">
         <div class="wrap">
-          <span class="mono-label">// OUR TEAM</span>
-          <h1>專業團隊</h1>
+          <span class="mono-label">// INSIGHTS & UPDATES</span>
+          <h1>Blog</h1>
           <p style="max-width: 600px; font-size: 20px;">
-            我們的核心團隊結合技術專長與商業洞察，確保每一個專案都能以最佳實務執行。
+            分享 AI 導入的最新趨勢、實務經驗與業界洞察，幫助企業掌握變革先機。
           </p>
         </div>
       </section>
 
       <section class="wrap">
-        <div class="section-title">TEAM_MEMBERS</div>
-        <p class="team-copy">
-          團隊成員來自頂尖科技公司與新創企業，擁有豐富的 AI 系統開發與產品管理經驗，能夠從技術與商業雙重角度提供全方位支援。
+        <div class="section-title">LATEST_POSTS</div>
+        <p class="blog-copy">
+          我們定期更新 AI 相關的專業文章，從技術趨勢到商業應用，提供實用的見解與建議。
         </p>
-        <div class="team-grid">
-          <div class="team-card">
-            <span class="mono-label">J</span>
-            <h3>資深工程師</h3>
-            <p>前大型科技公司資深工程師，專精於 AI 系統、代理流程與雲端基礎設施。擅長技術設計、規劃與端到端開發，確保系統高效且可擴展。</p>
+        <div class="blog-grid">
+          
+          <div class="blog-card">
+            <span class="mono-label">AI TRENDS</span>
+            <h3>2026 年 AI 趨勢預測</h3>
+            <div class="blog-meta">2026-04-27</div>
+            <p>探討生成式 AI、邊緣運算與企業應用等關鍵趨勢，分析對台灣中小企業的影響與機會。</p>
+            <a href="blog1.html" class="read-more">READ MORE</a>
           </div>
-          <div class="team-card">
-            <span class="mono-label">T</span>
-            <h3>資深產品負責人</h3>
-            <p>前領先科技新創公司資深產品負責人，具備深厚的產品理解與商業策略技能。擅長規劃、建置 MVP 以及運用現代工具與工作流程開發 AI 產品。</p>
+
+          <div class="blog-card">
+            <span class="mono-label">CASE STUDY</span>
+            <h3>製造業 AI 導入實戰</h3>
+            <div class="blog-meta">2026-04-20</div>
+            <p>深入剖析紡織廠導入 AI 瑕疵檢測的完整流程，從需求分析到成效驗證的實務經驗分享。</p>
+            <a href="blog2.html" class="read-more">READ MORE</a>
           </div>
+
+          <div class="blog-card">
+            <span class="mono-label">STRATEGY</span>
+            <h3>中小企業 AI 策略指南</h3>
+            <div class="blog-meta">2026-04-15</div>
+            <p>為中小企業量身打造的 AI 導入策略框架，涵蓋資源評估、風險管理與階段性實施建議。</p>
+            <a href="blog3.html" class="read-more">READ MORE</a>
+          </div>
+
         </div>
       </section>
     </main>
