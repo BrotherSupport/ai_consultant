@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <script>
       /* Honor saved language preference */
-      (function(){try{if(localStorage.getItem('lang')==='zh')location.replace('../service_mode.html');}catch(e){}})();
+      (function(){try{if(localStorage.getItem('lang')==='zh')location.replace('../open_source.html');}catch(e){}})();
     </script>
-    <title>Service Modes - AI consultant</title>
-    <meta name="description" content="AI consultant's service modes — from a free diagnosis and PoC pilot to full launch and operations, flexibly matched to your pace. See the results before you decide." />
+    <title>Open Source - AI consultant</title>
+    <meta name="description" content="AI consultant open source — tools and frameworks we built and released while deploying agentic AI systems for enterprises." />
 
     <!-- Favicons -->
     <link rel="icon" href="../favicon.ico" sizes="any" />
@@ -25,28 +25,44 @@
     <meta name="apple-mobile-web-app-title" content="AI Consultant" />
 
     <!-- SEO / Social preview -->
-    <link rel="canonical" href="https://brothersupport.github.io/ai_consultant/en/service_mode.html" />
-    <link rel="alternate" hreflang="zh-Hant" href="https://brothersupport.github.io/ai_consultant/service_mode.html" />
-    <link rel="alternate" hreflang="en" href="https://brothersupport.github.io/ai_consultant/en/service_mode.html" />
-    <link rel="alternate" hreflang="x-default" href="https://brothersupport.github.io/ai_consultant/service_mode.html" />
+    <link rel="canonical" href="https://brothersupport.github.io/ai_consultant/en/open_source.html" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://brothersupport.github.io/ai_consultant/open_source.html" />
+    <link rel="alternate" hreflang="en" href="https://brothersupport.github.io/ai_consultant/en/open_source.html" />
+    <link rel="alternate" hreflang="x-default" href="https://brothersupport.github.io/ai_consultant/open_source.html" />
     <meta name="robots" content="index,follow" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="AI consultant" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="zh_TW" />
-    <meta property="og:title" content="Service Modes - AI consultant" />
-    <meta property="og:description" content="AI consultant's service modes — from a free diagnosis and PoC pilot to full launch and operations, flexibly matched to your pace. See the results before you decide." />
-    <meta property="og:url" content="https://brothersupport.github.io/ai_consultant/en/service_mode.html" />
+    <meta property="og:title" content="Open Source - AI consultant" />
+    <meta property="og:description" content="AI consultant open source — tools and frameworks we built and released while deploying agentic AI systems for enterprises." />
+    <meta property="og:url" content="https://brothersupport.github.io/ai_consultant/en/open_source.html" />
     <meta property="og:image" content="https://brothersupport.github.io/ai_consultant/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="AI consultant — Turn AI Agents into your company's digital workforce" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Service Modes - AI consultant" />
-    <meta name="twitter:description" content="AI consultant's service modes — from a free diagnosis and PoC pilot to full launch and operations, flexibly matched to your pace. See the results before you decide." />
+    <meta name="twitter:title" content="Open Source - AI consultant" />
+    <meta name="twitter:description" content="AI consultant open source — tools and frameworks we built and released while deploying agentic AI systems for enterprises." />
     <meta name="twitter:image" content="https://brothersupport.github.io/ai_consultant/og-image.png" />
 
     <link rel="stylesheet" href="../linear.css">
+    <style>
+      .oss-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: var(--space-4) 0 var(--space-6); }
+      .oss-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+      .oss-gh {
+        width: 38px; height: 38px; flex: none; border: 1px solid var(--border); border-radius: 999px;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: var(--surface); color: var(--text); transition: all 0.15s ease;
+      }
+      .oss-gh:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+      .oss-card-icon { font-size: 30px; margin-bottom: var(--space-4); }
+      .oss-soon {
+        border-style: dashed !important; display: flex; align-items: center; justify-content: center;
+        text-align: center; min-height: 260px; color: var(--text-dim);
+      }
+      .oss-soon:hover { transform: none; box-shadow: none; }
+    </style>
   </head>
   <body>
 
@@ -56,15 +72,15 @@
           <a href="index.html" class="brand">AI CONSULTANT</a>
           <nav class="navlinks">
             <a href="index.html#services">SERVICES</a>
-            <a href="service_mode.html" class="active">SERVICE MODES</a>
+            <a href="service_mode.html">SERVICE MODES</a>
             <a href="success_stories.html">SUCCESS STORIES</a>
             <a href="team.html">TEAM</a>
             <a href="blog.html">BLOG</a>
             <a href="live_demo.html">LIVE DEMO</a>
             <a href="ai_agent.html">AI AGENT</a>
-            <a href="open_source.html">OPEN SOURCE</a>
+            <a href="open_source.html" class="active">OPEN SOURCE</a>
             <a href="index.html#contact">CONTACT</a>
-            <a href="../service_mode.html" class="lang-toggle" id="lang-toggle" title="中文" aria-label="切換為中文" onclick="try{localStorage.setItem('lang','zh')}catch(e){}">
+            <a href="../open_source.html" class="lang-toggle" id="lang-toggle" title="中文" aria-label="切換為中文" onclick="try{localStorage.setItem('lang','zh')}catch(e){}">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"></path></svg>
             </a>
             <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">
@@ -80,75 +96,48 @@
       <section class="hero b-bottom">
         <div class="aurora"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
         <div class="wrap">
-          <span class="mono-label">// SERVICE MODES</span>
-          <h1>Professional Service Modes</h1>
-          <p style="max-width: 600px; font-size: 18px;">
-            We offer flexible service packages, tailored to your needs and budget. From a single consultation to a full rollout, every stage is designed to maximize value.
+          <span class="mono-label">// OPEN SOURCE</span>
+          <h1>Open Source</h1>
+          <p style="max-width: 640px; font-size: 18px;">
+            We believe good tools deserve to be shared. Below are the open source projects we've built and released while deploying AI Agent systems for enterprises.
           </p>
         </div>
       </section>
 
       <section>
         <div class="wrap">
-          <span class="mono-label">SERVICE_PACKAGES</span>
+          <span class="mono-label">OUR_PROJECTS</span>
           <p style="max-width: 760px; font-size: 18px; margin-bottom: var(--space-8);">
-            Below are our standard service modes and pricing, covering end-to-end support from strategic planning to hands-on execution. All prices are in New Taiwan Dollars and include basic consulting and deliverable documentation.
+            These projects come out of real enterprise deployments — covering agentic automation, harness engineering, and multi-LLM orchestration. Feel free to explore, star, or send a PR.
           </p>
+
           <div class="card-grid">
             <div class="card reveal">
-              <span class="mono-label">01</span>
-              <h3>Strategy consulting</h3>
-              <p>In-depth interviews with leadership, producing an AI opportunity map and ROI analysis.</p>
-              <ul class="list-clean mb-4">
-                <li>2-3 workshops</li>
-                <li>Full opportunity assessment report</li>
-                <li>Prioritization recommendations</li>
-              </ul>
-              <div style="font-weight: 600; color: var(--accent);">NT$ 1,500 / hour</div>
+              <div class="oss-card-icon">🤖</div>
+              <h3>Agent Auto System</h3>
+              <p style="color: var(--text-muted);">
+                A CrewAI-powered automation platform with harness engineering built in. Users define jobs, trigger them via API or UI, and AI agents execute them asynchronously — with multi-LLM support, automatic result validation, quality scoring and full observability. Covers 11 job types today, from web scraping and form filling to email collection and PDF report generation, backed by 380 tests and Docker containerization.
+              </p>
+              <div class="oss-tags">
+                <span class="badge">Python</span>
+                <span class="badge">FastAPI</span>
+                <span class="badge">CrewAI</span>
+                <span class="badge">Multi-LLM</span>
+                <span class="badge">Docker</span>
+              </div>
+              <div class="oss-foot">
+                <span class="badge badge-accent">AUTOMATION</span>
+                <a href="https://github.com/BrotherSupport/agent_auto_system/tree/main" target="_blank" rel="noopener" class="oss-gh" title="View on GitHub" aria-label="View Agent Auto System on GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.07.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .31.21.67.8.56A10.99 10.99 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"></path></svg>
+                </a>
+              </div>
             </div>
-            <div class="card reveal">
-              <span class="mono-label">02</span>
-              <h3>Tooling &amp; adoption</h3>
-              <p>Assess existing systems, then select and configure the best-fit AI tools and platforms.</p>
-              <ul class="list-clean mb-4">
-                <li>Technical architecture design</li>
-                <li>Vendor evaluation and contract support</li>
-                <li>Initial setup and testing</li>
-              </ul>
-              <div style="font-weight: 600; color: var(--accent);">NT$ 80,000 - 120,000</div>
-            </div>
-            <div class="card reveal">
-              <span class="mono-label">03</span>
-              <h3>POC validation</h3>
-              <p>Rapidly build a prototype to validate business hypotheses and technical feasibility.</p>
-              <ul class="list-clean mb-4">
-                <li>4-6 weeks of prototype development</li>
-                <li>Impact measurement and tuning</li>
-                <li>Scaling recommendation report</li>
-              </ul>
-              <div style="font-weight: 600; color: var(--accent);">NT$ 100,000 - 150,000</div>
-            </div>
-            <div class="card reveal">
-              <span class="mono-label">04</span>
-              <h3>Data governance</h3>
-              <p>Establish data quality standards and security controls to keep AI applications reliable.</p>
-              <ul class="list-clean mb-4">
-                <li>Data audit and cleanup</li>
-                <li>Access control design</li>
-                <li>Compliance assessment</li>
-              </ul>
-              <div style="font-weight: 600; color: var(--accent);">NT$ 60,000 - 90,000</div>
-            </div>
-            <div class="card reveal">
-              <span class="mono-label">05</span>
-              <h3>Team training</h3>
-              <p>Help your team master practical AI implementation skills and change management.</p>
-              <ul class="list-clean mb-4">
-                <li>Customized training courses</li>
-                <li>Change management guidance</li>
-                <li>Ongoing support and consulting</li>
-              </ul>
-              <div style="font-weight: 600; color: var(--accent);">NT$ 40,000 - 70,000</div>
+
+            <div class="card reveal oss-soon">
+              <div>
+                <div style="font-size: 32px; margin-bottom: 8px;">＋</div>
+                <span class="mono-label" style="margin: 0;">MORE PROJECTS COMING SOON</span>
+              </div>
             </div>
           </div>
         </div>
