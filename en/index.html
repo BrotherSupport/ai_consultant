@@ -297,6 +297,38 @@
           </div>
         </div>
       </section>
+
+      <!-- CONTACT FORM -->
+      <section class="b-top">
+        <div class="wrap-narrow">
+          <div class="section-head reveal center mx-auto">
+            <span class="mono-label" style="justify-content:center;">GET_IN_TOUCH</span>
+            <h2>Not ready for the survey yet?<br><span class="gradient-text">Send us a message instead</span></h2>
+            <p class="lead mx-auto" style="max-width:520px;">Fill in the fields below and hit send — it opens your email app with the message pre-filled, ready to go.</p>
+          </div>
+          <div class="card reveal" style="max-width:560px; margin:0 auto;">
+            <form id="contact-form" onsubmit="return false;" style="display:flex; flex-direction:column; gap:var(--space-4);">
+              <div>
+                <label for="cf-name">Name</label>
+                <input type="text" id="cf-name" placeholder="Your name" required>
+              </div>
+              <div>
+                <label for="cf-email">Email</label>
+                <input type="email" id="cf-email" placeholder="your@email.com" required>
+              </div>
+              <div>
+                <label for="cf-company">Company / Title (optional)</label>
+                <input type="text" id="cf-company" placeholder="Company name, title">
+              </div>
+              <div>
+                <label for="cf-message">What do you need?</label>
+                <textarea id="cf-message" rows="5" placeholder="Which service, or which process you'd like to automate..." required></textarea>
+              </div>
+              <button type="button" id="cf-send" class="btn btn-primary btn-lg" style="align-self:center; margin-top:var(--space-2);">Send Email →</button>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
@@ -394,6 +426,25 @@
           entries.forEach(e => { if (e.isIntersecting) { loop(); obs.disconnect(); } });
         }, { threshold: 0.2 });
         obs.observe(section);
+      })();
+
+      /* Contact form -> mailto */
+      (function () {
+        const btn = document.getElementById('cf-send');
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+          const name = document.getElementById('cf-name').value.trim();
+          const email = document.getElementById('cf-email').value.trim();
+          const company = document.getElementById('cf-company').value.trim();
+          const message = document.getElementById('cf-message').value.trim();
+          if (!name || !email || !message) { alert('Please fill in your name, email, and message.'); return; }
+          const subject = encodeURIComponent('[Website Inquiry] from ' + name);
+          const lines = ['Name: ' + name, 'Email: ' + email];
+          if (company) lines.push('Company / Title: ' + company);
+          lines.push('', 'Message:', message);
+          const body = encodeURIComponent(lines.join('\n'));
+          window.location.href = 'mailto:brothersupport3@gmail.com?subject=' + subject + '&body=' + body;
+        });
       })();
     </script>
       <script defer src="../mobile-nav.js"></script>
