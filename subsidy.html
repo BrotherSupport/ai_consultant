@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <script>
+      /* Honor saved language preference */
+      (function(){try{if(localStorage.getItem('lang')==='en')location.replace('en/subsidy.html');}catch(e){}})();
+    </script>
+    <title>政府補助 - AI consultant</title>
+    <meta name="description" content="2026 年政府有多筆預算補助中小企業導入 AI，最高可補助專案金額的一半。我們幫你評估能申請哪一項、寫計畫書、送件，再一路做到導入完成與核銷。" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <!-- PWA / mobile app -->
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#7c3aed" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b0c10" media="(prefers-color-scheme: dark)" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="AI Consultant" />
+
+    <!-- SEO / Social preview -->
+    <link rel="canonical" href="https://brothersupport.github.io/ai_consultant/subsidy.html" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://brothersupport.github.io/ai_consultant/subsidy.html" />
+    <link rel="alternate" hreflang="en" href="https://brothersupport.github.io/ai_consultant/en/subsidy.html" />
+    <link rel="alternate" hreflang="x-default" href="https://brothersupport.github.io/ai_consultant/subsidy.html" />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AI consultant" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:title" content="政府補助 - AI consultant" />
+    <meta property="og:description" content="2026 年政府有多筆預算補助中小企業導入 AI，最高可補助專案金額的一半。我們幫你評估能申請哪一項、寫計畫書、送件，再一路做到導入完成與核銷。" />
+    <meta property="og:url" content="https://brothersupport.github.io/ai_consultant/subsidy.html" />
+    <meta property="og:image" content="https://brothersupport.github.io/ai_consultant/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AI consultant — 讓 AI Agent 成為企業的數位員工" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="政府補助 - AI consultant" />
+    <meta name="twitter:description" content="2026 年政府有多筆預算補助中小企業導入 AI，最高可補助專案金額的一半。我們幫你評估能申請哪一項、寫計畫書、送件。" />
+    <meta name="twitter:image" content="https://brothersupport.github.io/ai_consultant/og-image.png" />
+
+    <link rel="stylesheet" href="linear.css">
+    <style>
+      /* Subsidy amount cards — big number, plain language */
+      .sub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); }
+      .sub-card { padding: var(--space-8); border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--bg-alt); transition: border-color .2s ease, box-shadow .25s ease, transform .2s ease; }
+      .sub-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+      .sub-who { font-size: 14px; font-weight: 700; color: var(--accent); letter-spacing: 0.02em; margin-bottom: var(--space-3); }
+      .sub-amt { font-size: clamp(38px, 5vw, 52px); font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--text); margin-bottom: var(--space-4); }
+      .sub-amt .unit { font-size: 20px; font-weight: 600; color: var(--text-dim); letter-spacing: 0; }
+      .sub-card p { margin: 0; font-size: 15.5px; }
+
+      /* Bottom bar inside the amount block */
+      .sub-bar { margin-top: var(--space-6); border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--bg-alt); padding: var(--space-6) var(--space-8); display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap; }
+      .sub-bar p { margin: 0; font-size: 16px; max-width: 720px; }
+      .sub-bar strong { color: var(--text); }
+
+      /* Money math ledger */
+      .ledger { border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--bg-alt); overflow: hidden; }
+      .ledger-row { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); padding: 14px var(--space-6); border-bottom: 1px solid var(--border); font-size: 15px; color: var(--text-muted); }
+      .ledger-row:last-child { border-bottom: 0; }
+      .ledger-row .lv { font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text); white-space: nowrap; }
+      .ledger-row.minus .lv { color: var(--gain); }
+      .ledger-row.total { background: var(--accent-tint); font-weight: 700; color: var(--text); font-size: 17px; padding: 18px var(--space-6); }
+      .ledger-row.total .lv { font-size: 22px; color: var(--accent); }
+      .theme-dark .ledger-row.total { background: rgba(124,58,237,0.14); }
+
+      /* Two-pot diagram */
+      .pots { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-6); }
+      .pot { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-6); background: var(--bg-alt); }
+      .pot h4 { margin-bottom: var(--space-2); }
+      .pot .pot-k { font-family: var(--mono); font-size: 12px; letter-spacing: .05em; color: var(--accent); }
+      .pot ul { margin: var(--space-3) 0 0; }
+
+      .fine { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+      .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-lg); }
+      .table-wrap thead th { top: 0; }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <div class="wrap">
+        <div class="nav">
+          <a href="index.html" class="brand">AI CONSULTANT</a>
+          <nav class="navlinks">
+            <a href="index.html#services">SERVICES</a>
+            <a href="subsidy.html" class="active">GOV SUBSIDY</a>
+            <a href="service_mode.html">SERVICE MODES</a>
+            <a href="success_stories.html">SUCCESS STORIES</a>
+            <a href="team.html">TEAM</a>
+            <a href="blog.html">BLOG</a>
+            <a href="live_demo.html">LIVE DEMO</a>
+            <a href="ai_agent.html">AI AGENT</a>
+            <a href="open_source.html">OPEN SOURCE</a>
+            <a href="index.html#contact">CONTACT</a>
+            <a href="en/subsidy.html" class="lang-toggle" id="lang-toggle" title="English" aria-label="Switch to English" onclick="try{localStorage.setItem('lang','en')}catch(e){}">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"></path></svg>
+            </a>
+            <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            </button>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- HERO -->
+      <section class="hero b-bottom">
+        <div class="wrap">
+          <div><span class="hero-badge"><span class="dot"></span>2026 年度補助受理中</span></div>
+          <span class="mono-label">// GOV SUBSIDY</span>
+          <h1>導入 AI，<br><span class="gradient-text">政府幫你出一半</span></h1>
+          <p class="lead" style="max-width: 680px;">
+            政府每年編列預算，鼓勵中小企業用 AI 做創新與轉型。錢一直都在，
+            只是多數老闆不知道自己符合哪一項、也沒有時間寫那本計畫書。
+          </p>
+          <p style="max-width: 680px; font-size: 18px;">
+            我們把「評估你能申請哪一項 ＋ 計畫書怎麼寫 ＋ 導入怎麼做」包在一起。
+            你負責決定要解決哪個問題，剩下的公文與技術我們處理。
+          </p>
+          <div style="display:flex; gap:var(--space-4); flex-wrap:wrap; margin-top:var(--space-6);">
+            <a href="index.html#contact" class="btn btn-primary btn-lg">免費評估我能申請哪一項 →</a>
+            <a href="#how" class="btn btn-secondary btn-lg">先看流程怎麼跑</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 三種對象、三種金額 -->
+      <section>
+        <div class="wrap">
+          <div class="section-head" style="margin-bottom: var(--space-8);">
+            <span class="mono-label">HOW_MUCH</span>
+            <h2>你這種公司，大概能拿多少？</h2>
+            <p class="lead">
+              補助分成好幾條線，對象與上限都不一樣。下面是最常見的三種，先找到跟你最像的那一格。
+            </p>
+          </div>
+
+          <div class="sub-grid">
+            <div class="sub-card reveal">
+              <div class="sub-who">零售 · 餐飲 · 生活服務</div>
+              <div class="sub-amt">最高 10 萬<span class="unit">／店</span></div>
+              <p>商業署「服務業 AI 升級」單店導入補助——導入 AI 工具的費用直接折抵，適合單店或小型連鎖先試一家。</p>
+            </div>
+            <div class="sub-card reveal">
+              <div class="sub-who">批發 · 物流 · 連鎖</div>
+              <div class="sub-amt">最高 300 萬</div>
+              <p>多店升級型補助，可帶動 20–50 家上下游一起導入；若屬數據應用型計畫，總額最高 800 萬（政府補助比例 ≤ 50%）。</p>
+            </div>
+            <div class="sub-card reveal">
+              <div class="sub-who">製造業</div>
+              <div class="sub-amt">最高 500 萬</div>
+              <p>經濟部產業競爭力輔導團 AI 轉型補助，中小型製造業適用，常見用於檢測、排程、報表與現場數據整合。</p>
+            </div>
+          </div>
+
+          <div class="sub-bar reveal">
+            <p>
+              <strong>免費診斷時就幫你評估</strong>——你的公司符合哪一項、大概能拿多少、計畫書要寫什麼。
+              就算最後申請不上，我們也會給你一版不靠補助也划算的縮小版方案。
+            </p>
+            <a href="index.html#contact" class="btn btn-primary">評估我能申請哪項 →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 兩筆錢可以疊 -->
+      <section class="b-top">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="mono-label">STACKING</span>
+            <h2>其實是兩筆錢，<br><span class="gradient-text">而且可以疊著用</span></h2>
+            <p class="lead">
+              很多人只知道有「導入補助」，卻漏掉另一筆「訓練補助」。
+              兩筆分屬不同單位、各自申請，加起來能把自付金額壓得比想像中低很多。
+            </p>
+          </div>
+
+          <div class="pots">
+            <div class="card reveal">
+              <span class="pot-k">POT 1</span>
+              <h3 style="margin-top:6px;">導入補助：買系統、做開發</h3>
+              <p style="color:var(--text-muted);">
+                主要由經濟部各單位編列，用來付 AI 工具授權、系統建置、顧問與開發費用。
+                依產業別與計畫規模，補助比例常見落在專案總額的 <strong>三成到五成</strong>。
+              </p>
+              <ul class="list-clean">
+                <li>零售／餐飲：單店最高 10 萬，多店最高 300 萬</li>
+                <li>製造業中小企業：最高 500 萬</li>
+                <li>數據應用型計畫：總額最高 800 萬，補助 ≤ 50%</li>
+              </ul>
+            </div>
+            <div class="card reveal">
+              <span class="pot-k">POT 2</span>
+              <h3 style="margin-top:6px;">訓練補助：讓員工真的會用</h3>
+              <p style="color:var(--text-muted);">
+                來自勞動部與工業局的人才培訓資源，用來付課程、講師與內訓的費用。
+                這筆常被忽略，但它決定了系統上線後有沒有人在用。
+              </p>
+              <ul class="list-clean">
+                <li>勞動部企業人力提升：數位轉型類課程補助比例可達 <strong>七成</strong>，上限約 200 萬</li>
+                <li>50 人以下小型企業：另有全額補助＋派顧問進駐的方案</li>
+                <li>工業局企業訓練：每年最高約 100 萬</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="callout good" style="margin-top: var(--space-8);">
+            <span class="callout-k">為什麼要疊</span>
+            <p>
+              AI 導入失敗通常只有兩個原因：<strong>一開始覺得太貴不敢做</strong>，
+              以及<strong>做完了沒人會用</strong>。導入補助解決第一個，訓練補助解決第二個。
+              只申請一筆，你其實只解決了一半的問題。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 試算 -->
+      <section class="b-top">
+        <div class="wrap-narrow">
+          <div class="section-head" style="margin-bottom: var(--space-8);">
+            <span class="mono-label">DO_THE_MATH</span>
+            <h2>實際要付多少？<br>用一個 120 萬的專案算給你看</h2>
+            <p class="lead">以下是一個中型導入案的常見結構，數字為示意，實際依核定結果為準。</p>
+          </div>
+
+          <div class="ledger reveal">
+            <div class="ledger-row"><span>系統導入：流程盤點、AI Agent 建置、串接既有系統</span><span class="lv">1,000,000</span></div>
+            <div class="ledger-row"><span>教育訓練：主管與第一線員工共 4 梯次</span><span class="lv">200,000</span></div>
+            <div class="ledger-row" style="background:var(--surface); font-weight:600; color:var(--text);"><span>專案總額</span><span class="lv">1,200,000</span></div>
+            <div class="ledger-row minus"><span>導入補助（以 50% 計）</span><span class="lv">− 500,000</span></div>
+            <div class="ledger-row minus"><span>訓練補助（以 70% 計）</span><span class="lv">− 140,000</span></div>
+            <div class="ledger-row total"><span>公司實際自付</span><span class="lv">560,000</span></div>
+          </div>
+
+          <div class="kpis" style="margin-top: var(--space-6);">
+            <div class="kpi"><div class="kpi-num">53%</div><div class="kpi-lbl">由政府負擔的比例</div></div>
+            <div class="kpi"><div class="kpi-num">47%</div><div class="kpi-lbl">公司實際自付比例</div></div>
+            <div class="kpi"><div class="kpi-num">3–5 成</div><div class="kpi-lbl">方案搭配得好時，自付可壓到的區間</div></div>
+          </div>
+
+          <p class="fine" style="margin-top: var(--space-6);">
+            補助款多為<strong>「先執行、後核銷」</strong>：公司先付款、留存單據，計畫結案後才撥款。
+            所以現金流要先準備好，這件事我們會在提案時一起跟你講清楚。
+          </p>
+        </div>
+      </section>
+
+      <!-- 我們怎麼幫你 -->
+      <section class="b-top" id="how">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="mono-label">HOW_IT_WORKS</span>
+            <h2>你只要出一次時間，<br><span class="gradient-text">後面我們跑完</span></h2>
+            <p class="lead">
+              多數 AI 顧問不碰公文，多數代辦不懂技術。我們兩邊都做——
+              因為計畫書寫得過、但系統做不出來，對你一點意義都沒有。
+            </p>
+          </div>
+
+          <div class="card-grid">
+            <div class="card reveal">
+              <span class="mono-label">STEP 01</span>
+              <h3>免費診斷（30 分鐘）</h3>
+              <p style="color:var(--text-muted);">聊你現在最花人力的環節。我們當場判斷哪個流程適合先導入 AI，以及你符合哪些補助資格。</p>
+              <ul class="list-clean"><li>不用先準備資料</li><li>當場給初步可行性判斷</li></ul>
+            </div>
+            <div class="card reveal">
+              <span class="mono-label">STEP 02</span>
+              <h3>補助評估與方案設計</h3>
+              <p style="color:var(--text-muted);">確認可申請的項目、能拿多少、時程怎麼配。同時給你一份不含補助也成立的方案版本。</p>
+              <ul class="list-clean"><li>資格檢核表</li><li>金額與時程試算</li><li>有／無補助兩版報價</li></ul>
+            </div>
+            <div class="card reveal">
+              <span class="mono-label">STEP 03</span>
+              <h3>撰寫計畫書與送件</h3>
+              <p style="color:var(--text-muted);">依評審重點撰寫計畫書、備妥附件、協助送件與答辯。你只需要提供公司基本文件並簽名。</p>
+              <ul class="list-clean"><li>計畫書全程代筆</li><li>附件清單與文件協助</li><li>簡報與答辯陪同</li></ul>
+            </div>
+            <div class="card reveal">
+              <span class="mono-label">STEP 04</span>
+              <h3>導入、驗收與核銷</h3>
+              <p style="color:var(--text-muted);">系統實作、員工訓練、成效量測，一路做到結案核銷。補助不是終點，用起來才是。</p>
+              <ul class="list-clean"><li>PoC → 上線 → 維運</li><li>成效數據佐證</li><li>核銷文件整理</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 比較表 -->
+      <section class="b-top">
+        <div class="wrap">
+          <div class="section-head" style="margin-bottom: var(--space-8);">
+            <span class="mono-label">COMPARE</span>
+            <h2>三大方案一次看懂</h2>
+          </div>
+
+          <div class="table-wrap reveal">
+            <table>
+              <thead>
+                <tr>
+                  <th>方案</th>
+                  <th>適用對象</th>
+                  <th class="num">補助上限</th>
+                  <th class="num">補助比例</th>
+                  <th>常見用途</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>服務業 AI 升級（單店）</td>
+                  <td>零售、餐飲、生活服務</td>
+                  <td class="num">10 萬／店</td>
+                  <td class="num">依項目折抵</td>
+                  <td>AI 客服、訂位／點餐、銷售分析</td>
+                </tr>
+                <tr>
+                  <td>服務業 AI 升級（多店帶動）</td>
+                  <td>連鎖、批發、物流</td>
+                  <td class="num">300 萬</td>
+                  <td class="num">≤ 50%</td>
+                  <td>總部系統、跨店數據整合</td>
+                </tr>
+                <tr>
+                  <td>數據應用價值創造</td>
+                  <td>中型企業、有資料基礎者</td>
+                  <td class="num">800 萬</td>
+                  <td class="num">≤ 50%</td>
+                  <td>資料平台、預測模型、決策系統</td>
+                </tr>
+                <tr>
+                  <td>產業競爭力輔導團</td>
+                  <td>中小型製造業</td>
+                  <td class="num">500 萬</td>
+                  <td class="num">依核定</td>
+                  <td>智慧製造、檢測、排程優化</td>
+                </tr>
+                <tr>
+                  <td>勞動部企業人力提升</td>
+                  <td>各業別（訓練用途）</td>
+                  <td class="num">200 萬</td>
+                  <td class="num">最高 70%</td>
+                  <td>數位轉型課程、內訓</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="fine" style="margin-top: var(--space-4);">
+            上表為常見方案的概況整理，各計畫每年公告的名稱、金額、受理期間與資格條件都可能調整，
+            實際內容一律以主管機關當年度公告為準。診斷時我們會依你的產業別，比對當期最新公告再回覆。
+          </p>
+        </div>
+      </section>
+
+      <!-- 提醒 -->
+      <section class="b-top">
+        <div class="wrap-narrow">
+          <div class="section-head" style="margin-bottom: var(--space-8);">
+            <span class="mono-label">BEFORE_YOU_APPLY</span>
+            <h2>四件事，先講在前面</h2>
+            <p class="lead">與其送件被退，不如一開始就知道自己卡在哪。</p>
+          </div>
+
+          <div class="callout warn">
+            <span class="callout-k">01 · 分公司通常不行</span>
+            <p>多數計畫要求以<strong>獨立法人</strong>申請，分公司、辦事處常被排除。集團底下要用哪家公司送件，這件事要先確定。</p>
+          </div>
+          <div class="callout warn">
+            <span class="callout-k">02 · 同一筆支出不能重複領</span>
+            <p>同一個項目已經領過其他政府補助，就不能再申請第二次。有正在執行中的計畫，記得先告訴我們。</p>
+          </div>
+          <div class="callout warn">
+            <span class="callout-k">03 · 專案負責人不能完全外包</span>
+            <p>計畫要求公司內部要有實際負責人參與。我們可以代筆、代跑流程，但你們這邊需要有一位窗口掛名並參與會議。</p>
+          </div>
+          <div class="callout warn">
+            <span class="callout-k">04 · 預算有限、額滿為止</span>
+            <p>每年度預算是固定的，受理期間也有截止日，且多為<strong>先審先核</strong>。想申請就要提早準備，臨時抱佛腳通常來不及。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="b-top">
+        <div class="wrap-narrow">
+          <div class="section-head" style="margin-bottom: var(--space-8);">
+            <span class="mono-label">FAQ</span>
+            <h2>老闆最常問的問題</h2>
+          </div>
+
+          <details>
+            <summary>申請補助要另外付你們錢嗎？<span class="chev">＋</span></summary>
+            <p>免費診斷與資格評估不收費。若確定要送件，補助申請的協助費用會併入專案報價，我們會把「有補助」與「沒補助」兩種情況的實際自付金額都算給你看，再由你決定要不要做。</p>
+          </details>
+          <details>
+            <summary>如果申請沒過怎麼辦？<span class="chev">＋</span></summary>
+            <p>我們一定會同時準備一版不依賴補助也划算的縮小版方案——先做投資報酬最明確的那一段，等下一期公告再申請。不會讓你的專案因為補助沒過就整個停擺。</p>
+          </details>
+          <details>
+            <summary>錢是什麼時候拿到？<span class="chev">＋</span></summary>
+            <p>絕大多數補助是「先執行、後核銷」：公司先支付款項、保留發票與單據，計畫期中或結案後才撥款。所以你需要先準備現金流，這點我們會在提案階段就標示清楚。</p>
+          </details>
+          <details>
+            <summary>兩筆補助真的可以同時申請嗎？<span class="chev">＋</span></summary>
+            <p>可以，因為導入補助與訓練補助分屬不同單位、經費來源不同。前提是<strong>同一筆支出不能重複報帳</strong>——系統費用歸導入補助、課程費用歸訓練補助，帳目要分得乾淨。</p>
+          </details>
+          <details>
+            <summary>我們公司很小，也適合嗎？<span class="chev">＋</span></summary>
+            <p>適合，甚至更有利。50 人以下的小型企業有專屬的全額補助訓練方案，服務業單店補助的門檻也不高。小公司反而流程單純、導入速度快，成效更容易在一兩個月內看到。</p>
+          </details>
+          <details>
+            <summary>計畫書要我自己寫嗎？<span class="chev">＋</span></summary>
+            <p>不用。計畫書由我們依評審重點撰寫，你只需要提供公司基本文件、確認內容並用印。需要簡報或答辯時，我們會陪你一起去。</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="b-top">
+        <div class="wrap">
+          <div class="cta-box reveal">
+            <span class="mono-label" style="justify-content:center;">START_HERE</span>
+            <h2 style="margin-top:14px;">先花 30 分鐘，<br><span class="gradient-text">知道自己能拿多少</span></h2>
+            <p class="lead mx-auto" style="max-width:600px; margin-bottom: var(--space-8);">
+              不用先準備資料，也不用先決定要做什麼。聊完你會拿到三件事：
+              可申請的補助項目、大概能拿多少、以及最值得先導入的那個流程。
+            </p>
+            <div style="display:flex; gap:var(--space-4); flex-wrap:wrap; justify-content:center;">
+              <a href="https://forms.gle/M1YHzT8V3wErZGNJ6" target="_blank" rel="noreferrer" class="btn btn-primary btn-lg">前往問卷，預約診斷 →</a>
+              <a href="index.html#contact" class="btn btn-secondary btn-lg">直接留言給我們</a>
+            </div>
+          </div>
+
+          <p class="fine center mx-auto" style="max-width: 720px; margin-top: var(--space-8);">
+            本頁補助資訊整理自經濟部商業發展署、產業發展署與勞動部等單位公開資料，僅供初步參考。
+            各計畫的名稱、金額、補助比例與受理期間逐年調整，實際權利義務以主管機關當年度正式公告為準。
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap" style="display: flex; justify-content: space-between;">
+        <span>© 2026 AI CONSULTANT</span>
+        <span>TW_SMB_AI_SOLUTIONS</span>
+      </div>
+    </footer>
+
+    <script>
+      const themeToggle = document.getElementById('theme-toggle');
+      const moonIcon = themeToggle.querySelector('.moon');
+      const sunIcon = themeToggle.querySelector('.sun');
+      const htmlElement = document.documentElement;
+
+      // Check for saved theme preference
+      const currentTheme = localStorage.getItem('theme');
+      if (currentTheme === 'dark') {
+        htmlElement.classList.add('theme-dark');
+        moonIcon.style.display = 'none';
+        sunIcon.style.display = 'block';
+      }
+
+      themeToggle.addEventListener('click', () => {
+        htmlElement.classList.toggle('theme-dark');
+        const isDark = htmlElement.classList.contains('theme-dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+        moonIcon.style.display = isDark ? 'none' : 'block';
+        sunIcon.style.display = isDark ? 'block' : 'none';
+      });
+      var __io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");__io.unobserve(e.target);}});},{threshold:0.12});
+      document.querySelectorAll(".reveal").forEach(function(el,i){el.style.transitionDelay=(i%4)*80+"ms";__io.observe(el);});
+    </script>
+      <script defer src="mobile-nav.js"></script>
+  </body>
+</html>

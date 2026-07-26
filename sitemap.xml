@@ -21,6 +21,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://brothersupport.github.io/ai_consultant/subsidy.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://brothersupport.github.io/ai_consultant/service_mode.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -62,6 +67,11 @@
   </url>
   <url>
     <loc>https://brothersupport.github.io/ai_consultant/en/live_demo.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://brothersupport.github.io/ai_consultant/en/subsidy.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
