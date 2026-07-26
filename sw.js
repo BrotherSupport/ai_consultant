@@ -1,7 +1,7 @@
 /* AI consultant — service worker
    Cache-first for the app shell so the site is installable and works offline
    across iOS / Android / desktop. Bump CACHE on each release to refresh. */
-const CACHE = 'ai-consultant-v2';
+const CACHE = 'ai-consultant-v3';
 const SHELL = [
   './',
   './index.html',

@@ -35,18 +35,52 @@
       if (e.target.closest('a')) setOpen(false);
     });
 
+    /* Dropdown groups. CSS already opens them on hover for pointer users;
+       this adds click + keyboard support and keeps aria-expanded honest.
+       On mobile the buttons are pointer-events:none and the menus render
+       inline, so none of this runs there. */
+    var groups = [].slice.call(navlinks.querySelectorAll('.navgroup'));
+
+    function closeGroups(except) {
+      groups.forEach(function (g) {
+        if (g === except) return;
+        g.classList.remove('open');
+        var b = g.querySelector('.navgroup-btn');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    groups.forEach(function (g) {
+      var btn = g.querySelector('.navgroup-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var willOpen = !g.classList.contains('open');
+        closeGroups(g);
+        g.classList.toggle('open', willOpen);
+        btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      });
+      // Pointer users get hover from CSS; keep the aria state in sync.
+      g.addEventListener('mouseleave', function () {
+        g.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
     // Close on outside click / Escape
     document.addEventListener('click', function (e) {
+      if (!navlinks.contains(e.target)) closeGroups(null);
       if (!navlinks.classList.contains('open')) return;
       if (!navlinks.contains(e.target) && e.target !== toggle) setOpen(false);
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') setOpen(false);
+      if (e.key === 'Escape') { setOpen(false); closeGroups(null); }
     });
 
     // Reset when resizing back to desktop
     window.addEventListener('resize', function () {
       if (window.innerWidth > 860) setOpen(false);
+      closeGroups(null);
     });
   }
 

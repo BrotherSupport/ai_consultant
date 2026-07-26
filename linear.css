@@ -241,6 +241,56 @@ header > .wrap { width: 100%; }
 .navlinks a:not(.btn):hover, .navlinks a.active { color: var(--text); }
 .navlinks a:not(.btn):hover::after, .navlinks a.active::after { width: 100%; }
 
+/* Highlighted nav item (e.g. the subsidy page) */
+.navlinks a.nav-hot { color: var(--accent); font-weight: 600; }
+.navlinks a.nav-hot:hover, .navlinks a.nav-hot.active { color: var(--accent-hover); }
+
+/* Grouped nav — dropdown menus */
+.navgroup { position: relative; display: flex; align-items: center; }
+.navgroup-btn {
+  display: inline-flex; align-items: center; gap: 6px; position: relative;
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font-family: inherit; font-size: 14px; font-weight: 500; color: var(--text-muted);
+  transition: color 0.15s ease; -webkit-tap-highlight-color: transparent;
+}
+.navgroup-btn .chev-d { flex: none; transition: transform 0.2s ease; opacity: 0.65; }
+.navgroup-btn::after {
+  content: ""; position: absolute; left: 0; bottom: -6px; height: 2px; width: 0;
+  background: var(--grad); border-radius: 2px; transition: width 0.2s ease;
+}
+.navgroup:hover .navgroup-btn, .navgroup.open .navgroup-btn, .navgroup.has-active .navgroup-btn { color: var(--text); }
+.navgroup:hover .navgroup-btn::after, .navgroup.open .navgroup-btn::after, .navgroup.has-active .navgroup-btn::after { width: 100%; }
+.navgroup:hover .chev-d, .navgroup.open .chev-d { transform: rotate(180deg); }
+
+.navmenu {
+  position: absolute; top: 100%; left: -14px; padding-top: 14px; min-width: 286px; z-index: 120;
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+.navgroup:hover .navmenu, .navgroup.open .navmenu, .navgroup:focus-within .navmenu { opacity: 1; visibility: visible; transform: none; }
+.navmenu-inner {
+  display: flex; flex-direction: column; gap: 2px; padding: 8px;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+}
+.navlinks .navmenu a {
+  display: flex; flex-direction: column; gap: 2px; padding: 10px 12px;
+  border-radius: var(--radius-md); color: var(--text); font-size: 14px; font-weight: 600;
+  transition: background 0.15s ease;
+}
+.navlinks .navmenu a::after { display: none; }
+.navlinks .navmenu a:hover { background: var(--accent-tint); }
+.navlinks .navmenu a.active { background: var(--accent-tint); color: var(--accent); }
+.navmenu a .dd-d { font-size: 12.5px; font-weight: 400; color: var(--text-dim); line-height: 1.45; }
+.navmenu a:hover .dd-d { color: var(--text-muted); }
+.theme-dark .navlinks .navmenu a:hover, .theme-dark .navlinks .navmenu a.active { background: rgba(124,58,237,0.18); }
+
+/* Compact CTA button that fits the 66px header */
+.btn-nav { height: 38px; padding: 0 18px; font-size: 13.5px; }
+
+/* Language + theme toggles stay side by side, desktop and mobile alike */
+.nav-utils { display: flex; align-items: center; gap: var(--space-3); }
+
 /* Hamburger toggle — injected by mobile-nav.js, hidden on desktop */
 .nav-toggle {
   display: none; width: 42px; height: 42px; flex: none; cursor: pointer;
@@ -477,9 +527,31 @@ footer { padding: var(--space-16) 0 var(--space-12); border-top: 1px solid var(-
     border-bottom: 1px solid var(--border);
   }
   .navlinks a:not(.btn)::after { display: none; }
+
+  /* Groups become labelled sections — always expanded, no extra tap needed */
+  .navgroup { display: block; }
+  .navgroup-btn {
+    pointer-events: none; width: 100%; justify-content: flex-start;
+    padding: var(--space-6) 6px var(--space-2); font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim);
+  }
+  .navgroup-btn .chev-d, .navgroup-btn::after { display: none; }
+  .navmenu {
+    position: static; opacity: 1; visibility: visible; transform: none;
+    padding-top: 0; min-width: 0;
+  }
+  .navmenu-inner { background: none; border: 0; box-shadow: none; padding: 0; gap: 0; }
+  .navlinks .navmenu a {
+    padding: 15px 6px; border-radius: 0; font-size: 16px; font-weight: 500;
+    border-bottom: 1px solid var(--border);
+  }
+  .navlinks .navmenu a:hover, .navlinks .navmenu a.active { background: none; }
+  .navmenu a .dd-d { display: none; }
+
   .navlinks .btn { width: 100%; height: 50px; margin-top: var(--space-4); }
-  .navlinks .theme-toggle { margin-top: var(--space-4); }
-  .navlinks .lang-toggle { display: inline-flex; width: 38px; padding: 0; border: 1px solid var(--border); margin-top: var(--space-4); margin-right: var(--space-3); }
+  .navlinks .btn-nav { font-size: 16px; }
+  .nav-utils { margin-top: var(--space-4); }
+  .navlinks .lang-toggle { display: inline-flex; width: 38px; padding: 0; border: 1px solid var(--border); }
 
   .agent-rail { grid-template-columns: 1fr 1fr; gap: 28px 12px; }
   .agent-rail .track { display: none; }
